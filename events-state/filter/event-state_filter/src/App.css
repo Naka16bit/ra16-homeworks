@@ -1,0 +1,38 @@
+* {
+  margin: 0 auto;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #fff;
+  border-radius: 0px;
+  border: 1px solid #555;
+  margin-right: 5px;
+}
+
+img {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.container {
+  width: 900px;
+}
+
+.toolbar {
+  padding: 10px;
+}
+
+.images {
+  column-count: 3;
+  column-width: 33%;
+  padding: 10px;
+}
+
+.active {
+  background-color: #555;
+  border-radius: 0px;
+  border: 1px solid #555;
+  color: #fff;
+}
