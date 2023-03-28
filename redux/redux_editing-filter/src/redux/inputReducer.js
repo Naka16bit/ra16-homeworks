@@ -7,14 +7,14 @@ const initialState = {
 
 const inputReducer = (state = initialState, action) => {
     switch (action.type) {
-    case "CREATE_INPUT":
+    case "CHANGE_INPUT":
         const {name, value} = action.payload;
         return {...state, [name]: value};
     case "EDIT_SERVICE":
         const {text, price, id} = action.payload;
-        return {text: text, price: price, id: id};
+        return {...state, text: text, price: price, id: id};
     case "CLEAR_FORM":
-        return state = initialState;
+        return {...state, text: '', price: '', id: ''};
     default:
         return state;
     };

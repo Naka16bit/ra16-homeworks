@@ -15,7 +15,7 @@ const initialState = [
 
 const listReducer = (state = initialState, action) => {
     switch (action.type) {
-        case "CREATE_LIST":
+        case "ADD_SERVICE":
             const {text, price} = action.payload;
             return [...state, {id: nanoid(), text, price}];
         case "REMOVE_SERVICE":
@@ -26,10 +26,6 @@ const listReducer = (state = initialState, action) => {
             const newState = state;
             newState[index] = action.payload;
             return [...newState];
-        case "SEARCH_LIST":
-            const {value} = action.payload;
-            console.log(value)
-            return state.filter((item) => item.text.toLowerCase().indexOf(value.toLowerCase()) >= 0);
         default:
             return state;
     };

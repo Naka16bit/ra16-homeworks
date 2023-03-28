@@ -1,24 +1,20 @@
 import {useSelector, useDispatch} from 'react-redux'
-import {inputCreate, removeService, listCreate, editService, clearForm, editList, searchList} from "../redux/actions";
+import {changeInput, removeService, addService, editService, clearForm, editList} from "../redux/actions";
 
 function Form() {
     const dispatch = useDispatch();
     const text = useSelector(state => state.input);
-    console.log(text);
 
     const handleChange=({target}) => {
         const {name, value} = target;
-        dispatch(inputCreate(name, value));
-        if (name === "search") {
-            dispatch(searchList(value));
-        }
+        dispatch(changeInput(name, value));
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
         text.id ?
             dispatch(editList(text?.id, text?.text, text?.price)) :
-            dispatch(listCreate(text?.text, text?.price));
+            dispatch(addService(text?.text, text?.price));
         dispatch(clearForm());
     }
 

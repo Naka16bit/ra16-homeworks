@@ -1,9 +1,10 @@
 import {useSelector, useDispatch} from 'react-redux';
-import {inputCreate, removeService, listCreate, editService, clearForm, editList, searchList} from "../redux/actions";
+import {changeInput, removeService, addService, editService, clearForm, editList} from "../redux/actions";
 
 function List() {
     const dispatch = useDispatch();
     const items = useSelector(state => state.list);
+    const strToSearch = useSelector(state => state.input.search);
 
     const handleRemove = (idToRemove) => {
         dispatch(removeService(idToRemove));
@@ -15,7 +16,8 @@ function List() {
 
     return (
         <ul>
-            {items.map(({id, text, price}) => 
+            {items.filter((item) => item.text.toLowerCase().indexOf(strToSearch) >= 0)
+            .map(({id, text, price}) => 
             <li key={id}> 
                 {text} {price} руб. <button onClick={() => handleEdit(text, price, id)}>&#9998;</button>
                 <button onClick={() => handleRemove(id)}>&#10006;</button>
